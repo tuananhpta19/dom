@@ -1,0 +1,8 @@
+
+
+.slider-bar{
+    display: none;
+}
+.slider-bar.active{
+    display: block;
+}

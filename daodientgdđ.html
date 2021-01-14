@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="daodientgdd.css">
+</head>
+
+<body>
+    <div class="container">
+        <img class="slider-bar w-100 active"
+                        src="https://didongviet.vn/blog/wp-content/uploads/2019/09/iphone-11-ve-viet-nam-didongviet.jpg"
+                        alt="First slide">
+        <img class="slider-bar w-100"
+                        src="https://cellphones.com.vn/sforum/wp-content/uploads/2019/07/Samsung-Galaxy-Note-10-concept-render-design-Waqar-Khan-2.jpg"
+                        alt="First slide">
+        <img class="slider-bar w-100"
+                        src="https://cdn.tgdd.vn/Files/2019/05/20/1167828/xiaomi-redmi-note-7-5.jpg"
+                        alt="First slide">
+    </div>
+    <button id="next" data-index="0"> Next </button>
+    <button id="previous">Previous</button>
+</body>
+<script>
+    document.getElementById("next").addEventListener("click", function(){
+        var sliderBar = document.getElementsByClassName("slider-bar");
+        var indexNow = document.getElementById("next").getAttribute("data-index");
+        var index = parseInt(indexNow) + 1;
+        for(var i = 0; i < sliderBar.length ; i++){
+            sliderBar[i].classList.remove("active");
+            if(index > sliderBar.length - 1){
+                sliderBar[0].classList.add("active");
+                document.getElementById("next").setAttribute("data-index", 0);
+            }else{
+                sliderBar[index].classList.add("active");
+                document.getElementById("next").setAttribute("data-index", index);
+            }
+        }
+    })
+    document.getElementById("previous").addEventListener("click", function(){
+        var sliderBar = document.getElementsByClassName("slider-bar");
+        var indexNow = document.getElementById("next").getAttribute("data-index");
+        var index = parseInt(indexNow) - 1;
+        for(var i = 0; i < sliderBar.length ; i++){
+            sliderBar[i].classList.remove("active");
+            if(index < 0){
+                sliderBar[sliderBar.length-1].classList.add("active");
+                document.getElementById("next").setAttribute("data-index", sliderBar.length-1);
+            }else{
+                sliderBar[index].classList.add("active");
+                document.getElementById("next").setAttribute("data-index", index);
+            }
+        }
+    })
+</script>
+</html>
